@@ -1,4 +1,4 @@
-package study.oauth_base.authentication.domain.infra.naver;
+package study.oauth_base.authentication.infra.naver;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

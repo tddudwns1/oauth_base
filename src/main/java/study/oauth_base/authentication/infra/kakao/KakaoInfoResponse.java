@@ -1,4 +1,4 @@
-package study.oauth_base.authentication.domain.infra.kakao;
+package study.oauth_base.authentication.infra.kakao;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

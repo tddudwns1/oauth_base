@@ -1,4 +1,4 @@
-package study.oauth_base.authentication.domain.infra.kakao;
+package study.oauth_base.authentication.infra.kakao;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package study.oauth_base.authentication.domain.infra.naver;
+package study.oauth_base.authentication.infra.kakao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,32 +16,29 @@ import study.oauth_base.member.domain.OAuthProvider;
 
 @Component
 @RequiredArgsConstructor
-public class NaverApiClient implements OAuthApiClient {
+public class KakaoApiClient implements OAuthApiClient {
 
     private static final String GRANT_TYPE = "authorization_code";
 
-    @Value("${oauth.naver.url.auth}")
+    @Value("${oauth.kakao.url.auth}")
     private String authUrl;
 
-    @Value("${oauth.naver.url.api}")
+    @Value("${oauth.kakao.url.api}")
     private String apiUrl;
 
-    @Value("${oauth.naver.client-id}")
+    @Value("${oauth.kakao.client-id}")
     private String clientId;
-
-    @Value("${oauth.naver.secret}")
-    private String clientSecret;
 
     private final RestTemplate restTemplate;
 
     @Override
     public OAuthProvider oAuthProvider() {
-        return OAuthProvider.NAVER;
+        return OAuthProvider.KAKAO;
     }
 
     @Override
     public String requestAccessToken(OAuthLoginParams params) {
-        String url = authUrl + "/oauth2.0/token";
+        String url = authUrl + "/oauth/token";
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -49,11 +46,10 @@ public class NaverApiClient implements OAuthApiClient {
         MultiValueMap<String, String> body = params.makeBody();
         body.add("grant_type", GRANT_TYPE);
         body.add("client_id", clientId);
-        body.add("client_secret", clientSecret);
 
         HttpEntity<?> request = new HttpEntity<>(body, httpHeaders);
 
-        NaverTokens response = restTemplate.postForObject(url, request, NaverTokens.class);
+        KakaoTokens response = restTemplate.postForObject(url, request, KakaoTokens.class);
 
         assert response != null;
         return response.getAccessToken();
@@ -61,16 +57,17 @@ public class NaverApiClient implements OAuthApiClient {
 
     @Override
     public OAuthInfoResponse requestOauthInfo(String accessToken) {
-        String url = apiUrl + "/v1/nid/me";
+        String url = apiUrl + "/v2/user/me";
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         httpHeaders.set("Authorization", "Bearer " + accessToken);
 
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        body.add("property_keys", "[\"kakao_account.email\", \"kakao_account.profile\"]");
 
         HttpEntity<?> request = new HttpEntity<>(body, httpHeaders);
 
-        return restTemplate.postForObject(url, request, NaverInfoResponse.class);
+        return restTemplate.postForObject(url, request, KakaoInfoResponse.class);
     }
 }
