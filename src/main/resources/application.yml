@@ -7,7 +7,9 @@ spring:
       hibernate:
         format_sql: true
   profiles:
-    include: db
+    include:
+      - db
+      - oauth
 
 # Hibernate SQL Debugging
 logging:
