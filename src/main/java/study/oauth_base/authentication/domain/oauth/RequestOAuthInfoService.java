@@ -1,7 +1,6 @@
 package study.oauth_base.authentication.domain.oauth;
 
 import org.springframework.stereotype.Component;
-import study.oauth_base.member.domain.OAuthProvider;
 
 import java.util.List;
 import java.util.Map;

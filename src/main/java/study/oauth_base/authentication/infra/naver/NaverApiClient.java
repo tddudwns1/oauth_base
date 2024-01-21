@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import study.oauth_base.authentication.domain.oauth.OAuthApiClient;
 import study.oauth_base.authentication.domain.oauth.OAuthInfoResponse;
 import study.oauth_base.authentication.domain.oauth.OAuthLoginParams;
-import study.oauth_base.member.domain.OAuthProvider;
+import study.oauth_base.authentication.domain.oauth.OAuthProvider;
 
 @Component
 @RequiredArgsConstructor

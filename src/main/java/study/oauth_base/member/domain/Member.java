@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import study.oauth_base.authentication.domain.oauth.OAuthProvider;
 
 @Getter
 @Entity

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import study.oauth_base.authentication.domain.oauth.OAuthInfoResponse;
-import study.oauth_base.member.domain.OAuthProvider;
+import study.oauth_base.authentication.domain.oauth.OAuthProvider;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)

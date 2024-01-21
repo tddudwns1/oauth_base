@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import study.oauth_base.authentication.domain.oauth.OAuthLoginParams;
-import study.oauth_base.member.domain.OAuthProvider;
+import study.oauth_base.authentication.domain.oauth.OAuthProvider;
 
 @Getter
 @NoArgsConstructor
